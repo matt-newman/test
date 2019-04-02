@@ -1,8 +1,8 @@
 videojs.registerPlugin('nukAmpAdsPreroll', function() {
 
-  // if ( !window.AMP ) {
-  //   return false;
-  // }
+  if ( !window.AMP ) {
+    return false;
+  }
   
   var myPlayer = this;
 
