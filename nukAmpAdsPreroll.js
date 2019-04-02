@@ -1,9 +1,9 @@
-videojs.registerPlugin('nukAmpAdsPreroll', function() {
+videojs.registerPlugin('nukAmpAdsPreroll', function () {
 
-  if ( !window.AMP ) {
-    return false;
+  if ( window.location.href.toLowerCase().indexOf('amp') === -1 ) {
+    return;
   }
-  
+
   var myPlayer = this;
 
   function getQuerystring(key, default_) {
@@ -13,12 +13,11 @@ videojs.registerPlugin('nukAmpAdsPreroll', function() {
     regex = new RegExp("[\\?&]" + key + "=([^&#]*)");
     qs = regex.exec(window.location.href);
     if (qs === null) {
-        return default_;
+      return default_;
     } else {
-        return qs[1];
+      return qs[1];
     }
-}
-
+  }
 
   // Get the query string and un-URL encode it
   myPlayer.ima3.settings.serverUrl = myPlayer.ima3.settings.serverUrl + "&iu=" + getQuerystring("iu");
