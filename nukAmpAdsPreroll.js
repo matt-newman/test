@@ -1,8 +1,4 @@
-videojs.registerPlugin('nukAmpAdsPreroll', function() {
-
-  if ( !window.AMP ) {
-    return false;
-  }
+videojs.registerPlugin('newsukAmpAdsPreroll', function() {
 
   var myPlayer = this;
 
