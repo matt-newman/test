@@ -1,6 +1,6 @@
 videojs.registerPlugin('nukAmpAdsPreroll', function () {
 
-  if ( window.location.href.toLowerCase().indexOf('amp') === -1 ) {
+  if ( window.location.href.toLowerCase().indexOf('/amp') === -1 ) {
     return;
   }
 
