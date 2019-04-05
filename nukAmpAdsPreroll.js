@@ -39,6 +39,6 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
   }
 
   // Get the query string and un-URL encode it
-  myPlayer.ima3.settings.serverUrl = myPlayer.ima3.settings.serverUrl.replace("&iu=", "&iu=" + getQuerystring("iu")).replace(/&description_url=.*?&/, "&description_url=" + getCanonicalUrl() + '&');
+  myPlayer.ima3.settings.serverUrl = myPlayer.ima3.settings.serverUrl + "&iu=" + getQuerystring("iu") + "&description_url=" + getCanonicalUrl();
 
 });
