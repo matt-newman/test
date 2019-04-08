@@ -20,31 +20,19 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
   }
 
   function isAmpPage() {
-    var isAmpPage = getQuerystring( 'amp', false );
-    
-    console.log('MATT:', "window.location.href", window.location.href);
-    console.log('MATT:', "isAmpPage", isAmpPage);
-
-    if ( isAmpPage ) {
-      isAmpPage = isAmpPage.split('=')[1] || "";
-      isAmpPage = isAmpPage.toLowerCase() !== "false";
-    }
-
-    console.log('MATT:', "isAmpPage", isAmpPage);
-
+    var encodedBaseUri = getQuerystring( 'cust_params' );
+    var custParams = decodeURIComponent( decodeURIComponent( encodedBaseUri ) );
+    isAmpPage = custParams.toLowerCase().indexOf('&amp=true') > -1;
     return isAmpPage;
   }
 
   function getCanonicalUrl() {
     //define a variable to hold the canonical URL
     var url = "https://www.thesun.co.uk/";
-
     var encodedBaseUri = getQuerystring( 'cust_params' );
     var custParams = decodeURIComponent( decodeURIComponent( encodedBaseUri ) );
     url = custParams.split('&url=')[1] || url;
     url = url.split('&')[0];
-
-    console.log('MATT:', "getCanonicalUrl", url);
     return url;
   }
 
