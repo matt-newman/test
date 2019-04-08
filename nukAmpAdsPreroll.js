@@ -21,10 +21,16 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
 
   function isAmpPage() {
     var isAmpPage = getQuerystring( 'amp', false );
+    
+    console.log('MATT:', "isAmpPage", isAmpPage);
+
     if ( isAmpPage ) {
       isAmpPage = isAmpPage.split('=')[1] || "";
       isAmpPage = isAmpPage.toLowerCase() !== "false";
     }
+
+    console.log('MATT:', "isAmpPage", isAmpPage);
+
     return isAmpPage;
   }
 
@@ -36,6 +42,8 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
     var custParams = decodeURIComponent( decodeURIComponent( encodedBaseUri ) );
     url = custParams.split('&url=')[1] || url;
     url = url.split('&')[0];
+
+    console.log('MATT:', "getCanonicalUrl", url);
     return url;
   }
 
