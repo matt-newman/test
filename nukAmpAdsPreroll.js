@@ -1,6 +1,10 @@
 videojs.registerPlugin('nukAmpAdsPreroll', function () {
 
-  if (window.location.href.toLowerCase().indexOf('/amp') === -1) {
+  console.log("MATT:", "window.location", window.location);
+  console.log("MATT:", "this", this);
+  console.log("MATT:", "window", window);
+
+  if (window.location.href.toLowerCase().indexOf('amp') === -1) {
     return;
   }
 
