@@ -1,15 +1,11 @@
 videojs.registerPlugin('nukAmpAdsPreroll', function () {
-  var canonicalUri = getCanonicalUrl();
+  var baseUri = document.getElementsByTagName('link')[0].baseURI;
 
-  console.log("MATT:", "canonicalUri", canonicalUri);
-  console.log("MATT:", "document", document);
-  console.log("MATT:", "window", window);
-  console.log("MATT:", "this", this);
-
-  if ( canonicalUri.toLowerCase().indexOf('/amp') === -1) {
+  if ( baseUri.toLowerCase().indexOf('/amp') === -1) {
     return;
   }
 
+  var canonicalUri = getCanonicalUrl();
   var myPlayer = this;
 
   function getQuerystring(key, default_) {
@@ -34,11 +30,11 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
 
     //loop through looking for a canonical link
     //use the last one found
-    [].slice.apply(links).forEach(function (key) {
-      if (key.rel !== 'canonical') {
+    [].slice.apply(links).forEach(function (item) {
+      if (item.rel !== 'canonical') {
         return;
       };
-      url = key.href;
+      url = item.href;
     });
 
     return url;
