@@ -22,6 +22,7 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
   function isAmpPage() {
     var isAmpPage = getQuerystring( 'amp', false );
     
+    console.log('MATT:', "window.location.href", window.location.href);
     console.log('MATT:', "isAmpPage", isAmpPage);
 
     if ( isAmpPage ) {
