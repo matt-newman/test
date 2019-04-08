@@ -2,6 +2,9 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
   var canonicalUri = getCanonicalUrl();
 
   console.log("MATT:", "canonicalUri", canonicalUri);
+  console.log("MATT:", "document", document);
+  console.log("MATT:", "window", window);
+  console.log("MATT:", "this", this);
 
   if ( canonicalUri.toLowerCase().indexOf('/amp') === -1) {
     return;
