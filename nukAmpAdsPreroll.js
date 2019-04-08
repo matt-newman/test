@@ -1,14 +1,5 @@
 videojs.registerPlugin('nukAmpAdsPreroll', function () {
-
-  console.log("MATT:", "canonicalUri", canonicalUri);
-  console.log("MATT:", "document", document);
-  console.log("MATT:", "window", window);
-  console.log("MATT:", "this", this);
-  console.log("MATT:", "links", document.getElementsByTagName('link'));
-
-  var baseUri = document.getElementsByTagName('link')[0].baseURI;
-
-  if ( baseUri.toLowerCase().indexOf('/amp') === -1) {
+  if ( isAmpPage() === false ) {
     return;
   }
 
@@ -28,22 +19,23 @@ videojs.registerPlugin('nukAmpAdsPreroll', function () {
     }
   }
 
+  function isAmpPage() {
+    var isAmpPage = getQuerystring( 'amp', false );
+    if ( isAmpPage ) {
+      isAmpPage = isAmpPage.split('=')[1] || "";
+      isAmpPage = isAmpPage.toLowerCase() !== "false";
+    }
+    return isAmpPage;
+  }
+
   function getCanonicalUrl() {
     //define a variable to hold the canonical URL
     var url = "https://www.thesun.co.uk/";
 
-    //grab all the link tags in the current page
-    var links = document.getElementsByTagName('link');
-
-    //loop through looking for a canonical link
-    //use the last one found
-    [].slice.apply(links).forEach(function (item) {
-      if (item.rel !== 'canonical') {
-        return;
-      };
-      url = item.href;
-    });
-
+    var encodedBaseUri = getQuerystring( 'cust_params' );
+    var custParams = decodeURIComponent( decodeURIComponent( encodedBaseUri ) );
+    url = custParams.split('&url=')[1] || url;
+    url = url.split('&')[0];
     return url;
   }
 
