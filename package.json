@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Matt testing stuff",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-minify": "^0.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-newman/test.git"
+  },
+  "author": "Matt Newman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matt-newman/test/issues"
+  },
+  "homepage": "https://github.com/matt-newman/test#readme"
+}
