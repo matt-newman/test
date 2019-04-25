@@ -4,5 +4,6 @@
             "modules": false
         }],
         "minify"
-    ]
+    ],
+    "comments": false
 }
