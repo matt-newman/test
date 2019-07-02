@@ -10,7 +10,6 @@
     var alreadyHasWidget = document.querySelector('*[data-type="price-comparison"]');
     var alreadyInjectedScript = document.querySelector(`script[src="${MONETIZER_SCRIPT_URI}"]`);
     var isSunSelectsProductPage = /\/sun-selects\/\d+/i.test(document.location.href);
-    var topicKeywordsRegex = /tech|motoring/i;
 
     var injectScript = function () {
         var s = document.createElement('script');
@@ -29,11 +28,6 @@
         };
         var x = document.getElementsByTagName('script')[0];
         x.parentNode.insertBefore(s, x);
-    };
-
-    var isMatchingTopicPage = function() {
-        var topicTags = [].slice.call( document.querySelectorAll( TOPIC_TAG_SELECTOR ) );
-        return topicTags.some( ( e ) => { return topicKeywordsRegex.test( e.innerText ); } );
     };
 
     var findBuyLinks = function () {
@@ -100,7 +94,7 @@
         checkForThenRemoveCTAs();
     };
 
-    if (!isSunSelectsProductPage || alreadyHasWidget || alreadyInjectedScript || !isMatchingTopicPage()) {
+    if (!isSunSelectsProductPage || alreadyHasWidget || alreadyInjectedScript) {
         return;
     }
 

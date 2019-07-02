@@ -12,7 +12,8 @@
     "@babel/preset-env": "^7.4.3"
   },
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "monetizer": "babel monetizer.js --presets minify > monetizer.min.js"
   },
   "repository": {
     "type": "git",
